@@ -65,16 +65,16 @@ pipeline {
 		
 		stage("Deploy to staging") {
 		     steps {
-		          sh "docker run -d --rm -p 8765:8080 --name calculator localhost:5000/calculator"
+		          //sh "docker run -d --rm -p 8765:8080 --name calculator localhost:5000/calculator"
+		     	    sh "/usr/local/bin/docker-compose up -d"
 		     }
 		}
 		
 		stage("Acceptance test") {
 		     steps {
-		          //sleep 10
-		          //sh 'chmod +x acceptance_test.sh'
-		          //sh "./acceptance_test.sh"
-		           sh "/usr/local/bin/docker-compose up -d"
+		          sleep 10
+		          sh 'chmod +x acceptance_test.sh'
+		          sh "./acceptance_test.sh"
 		     }
 		}
 		
