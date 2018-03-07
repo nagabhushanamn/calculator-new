@@ -74,7 +74,7 @@ pipeline {
 		          //sleep 10
 		          //sh 'chmod +x acceptance_test.sh'
 		          //sh "./acceptance_test.sh"
-		           sh "docker-compose up -d"
+		           sh "/usr/local/bin/docker-compose up -d"
 		     }
 		}
 		
@@ -88,7 +88,7 @@ pipeline {
           body: "Your build completed, please check: ${env.BUILD_URL}"
           
           //sh "docker stop calculator"
-          sh "docker-compose down"
+          sh "/usr/local/bin/docker-compose down"
      }
 }
 }          
