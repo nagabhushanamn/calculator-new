@@ -12,5 +12,10 @@ pipeline {
 		          sh "./gradlew clean compileJava"
 		     }
 		}
+		stage("Unit test") {
+		     steps {
+		          sh "./gradlew test"
+		     }
+		}
 	}
 }          
