@@ -71,9 +71,10 @@ pipeline {
 		
 		stage("Acceptance test") {
 		     steps {
-		          sleep 10
-		          sh 'chmod +x acceptance_test.sh'
-		          sh "./acceptance_test.sh"
+		          //sleep 10
+		          //sh 'chmod +x acceptance_test.sh'
+		          //sh "./acceptance_test.sh"
+		           sh "docker-compose up -d"
 		     }
 		}
 		
@@ -86,7 +87,8 @@ pipeline {
           subject: "Completed Pipeline: ${currentBuild.fullDisplayName}",
           body: "Your build completed, please check: ${env.BUILD_URL}"
           
-          sh "docker stop calculator"
+          //sh "docker stop calculator"
+          sh "docker-compose down"
      }
 }
 }          
