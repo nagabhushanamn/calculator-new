@@ -15,6 +15,11 @@ pipeline {
 		stage("Unit test") {
 		     steps {
 		          sh "./gradlew test"
+		          publishHTML (target: [
+                        reportDir: 'build/reports/tests/test',
+                        reportFiles: 'index.html',
+                        reportName: "UnitTest Report"
+                  ])
 		     }
 		}
 	}
