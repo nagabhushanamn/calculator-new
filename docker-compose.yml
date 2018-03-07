@@ -1,7 +1,7 @@
 version: "3"
 services:
      calculator:
-          image: calculator:latest
+          image: localhost:5000/calculator:latest
           ports:
                - 8080
      redis:
