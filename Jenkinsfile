@@ -71,7 +71,8 @@ pipeline {
 		
 		stage("Acceptance test") {
 		     steps {
-		          sleep 20
+		          sleep 10
+		          sh 'chmod +x acceptance_test.sh'
 		          sh "./acceptance_test.sh"
 		     }
 		}
@@ -84,6 +85,8 @@ pipeline {
           mail to: 'team@company.com',
           subject: "Completed Pipeline: ${currentBuild.fullDisplayName}",
           body: "Your build completed, please check: ${env.BUILD_URL}"
+          
+          sh "docker stop calculator"
      }
 }
 }          
