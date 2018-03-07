@@ -7,5 +7,10 @@ pipeline {
                 git url: 'https://github.com/nagabhushanamn/calculator-new.git'
             }
           }
+          stage("Compile") {
+		     steps {
+		          sh "./gradlew clean compileJava"
+		     }
+		}
 	}
 }          
