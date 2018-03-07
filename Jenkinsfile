@@ -22,5 +22,23 @@ pipeline {
                   ])
 		     }
 		}
+		stage("Code coverage") {
+		     steps {
+		          sh "./gradlew jacocoTestReport"
+		          publishHTML (target: [
+                            reportDir: 'build/reports/jacoco/test/html',
+                            reportFiles: 'index.html',
+                            reportName: "Test-Coverage Report"
+                        ])
+		          sh "./gradlew jacocoTestCoverageVerification"
+		     }
+		}
 	}
 }          
+
+
+
+
+
+
+
